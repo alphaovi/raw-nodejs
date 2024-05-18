@@ -1,0 +1,24 @@
+const http = require('http');
+const fs = require("fs");
+
+// creating a server using raw node.js
+
+const server = http.createServer();
+
+// server listener
+
+server.on("request", (req, res) => {
+    if (req.url === "/read-file" && req.method === "GET")
+
+     // streaming file reading
+
+
+
+
+        res.end("Hello from world");
+
+});
+
+server.listen(5000, () => {
+    console.log(`server is listening on port 5000`);
+})
