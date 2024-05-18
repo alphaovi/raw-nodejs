@@ -8,14 +8,21 @@ const server = http.createServer();
 // server listener
 
 server.on("request", (req, res) => {
-    if (req.url === "/read-file" && req.method === "GET")
+    if (req.url === "/read-file" && req.method === "GET") {
+        // streaming file reading
+        const readableStream = fs.createReadStream('./texts/read.txt')
 
-     // streaming file reading
+        readableStream.on("data", (buffer) => {
+            res.write(buffer);
+        })
+
+        readableStream.on("end", () => {
+            res.end("Hello from world");
+        })
+
+    }
 
 
-
-
-        res.end("Hello from world");
 
 });
 
